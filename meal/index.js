@@ -1,4 +1,4 @@
-const socket = io('http://192.168.0.113:7777')
+const socket = io('https://api.aif.uz')
 const token = localStorage.getItem('token')
 const mealsContainer = document.getElementById('meals-container')
 const updateFormContainer = document.getElementById('update-form-container')
@@ -118,7 +118,7 @@ updateForm.addEventListener('submit', async event => {
 
     try {
         const response = await fetch(
-            `http://192.168.0.113:7777/meal/${id}`,
+            `https://api.aif.uz/meal/${id}`,
             {
                 method: 'PUT',
                 headers: {
@@ -156,7 +156,7 @@ deleteMealBtn.addEventListener('click', async (event) => {
     const id = document.querySelector('.del-popup').dataset.id
 
     try {
-        const response = await fetch(`http://192.168.0.113:7777/meal/${id}`, {
+        const response = await fetch(`https://api.aif.uz/meal/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -183,7 +183,7 @@ deleteMealBtn.addEventListener('click', async (event) => {
 const changeStatus = async el => {
     try {
         const response = await fetch(
-            `http://192.168.0.113:7777/meal/${el.id}/change-status`,
+            `https://api.aif.uz/meal/${el.id}/change-status`,
             {
                 method: 'PUT',
                 headers: {
