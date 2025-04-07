@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CP</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
 </head>
 
 <body>
     <div class="main-container">
 
-        <div style="font-size: 20px; text-decoration: underline;"><a href="../../">Home</a>/<a
-                href="../">Category</a>/Create</div>
+        <div style="font-size: 20px; text-decoration: underline;"><a href="../../index.html">Home</a>/<a
+                href="../index.html">Category</a>/Create</div>
 
 
         <h1>Create category</h1>
@@ -32,6 +33,7 @@
     </div>
 
     <script>
+        const socket = io()
         const token = localStorage.getItem('token');
         if (!token) window.location.href = '../';
 
@@ -47,7 +49,7 @@
             };
 
             try {
-                const response = await fetch('http://192.168.0.113:7777/category', {
+                const response = await fetch('https://api.aif.uz/category', {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`,

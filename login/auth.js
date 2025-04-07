@@ -6,7 +6,7 @@ form.addEventListener('submit', async (event) => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    const apiUrl = 'http://192.168.0.113:7777/login';
+    const apiUrl = 'https://api.aif.uz/login';
 
     const requestData = {
         username: username,

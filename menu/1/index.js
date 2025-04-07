@@ -1,4 +1,4 @@
-const socket = io('http://192.168.0.113:7777')
+const socket = io('https://api.aif.uz')
 const menu = document.getElementById('menu')
 const cartDiv = document.getElementById('cart')
 const menuContainer = document.getElementById('menu-container')
