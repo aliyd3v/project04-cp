@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-container">
+
+        <div style="font-size: 20px; text-decoration: underline;"><a href="../../">Home</a>/<a
+                href="../">Category</a>/Create</div>
+
+
+        <h1>Create category</h1>
+
+        <div class="meal-create-form">
+            <form id="create-category-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="active">Active</label>
+                <input type="number" id="active" name="active" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        const token = localStorage.getItem('token');
+        if (!token) window.location.href = '../';
+
+        const form = document.getElementById('create-category-form');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // JSON sifatida ma'lumot jo‘natamiz
+            const data = {
+                name: document.getElementById('name').value,
+                active: Number(document.getElementById('active').value) // String emas, Number bo‘lishi kerak
+            };
+
+            try {
+                const response = await fetch('http://192.168.0.113:7777/category', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json' // JSON formatini belgilaymiz
+                    },
+                    body: JSON.stringify(data) // JSON formatida jo‘natamiz
+                });
+
+                const res = await response.json();
+
+                if (!response.ok) {
+                    alert('Failed to create category: ' + (res.message || 'Unknown error'));
+                } else {
+                    socket.emit('update-menu')
+                    alert('Category created successfully!');
+                    window.location.href = '../'
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

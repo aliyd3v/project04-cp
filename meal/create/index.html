@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-container">
+
+        <div style="font-size: 20px; text-decoration: underline;"><a href="../../">Home</a>/<a href="../">Meal</a>Create
+        </div>
+
+        <h1>Create meal</h1>
+
+        <div class="meal-create-form">
+            <form id="create-meal-form" enctype="multipart/form-data">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" required>
+
+                <label for="category_id">Category id</label>
+                <input type="number" id="category_id" name="category_id" required>
+
+                <label for="active">Active</label>
+                <input type="number" id="active" name="active" required>
+
+                <label for="image">Select image</label>
+                <input type="file" id="image" name="image">
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        const token = localStorage.getItem('token');
+        if (!token) window.location.href = '../';
+
+        const form = document.getElementById('create-meal-form');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('price', document.getElementById('price').value);
+            formData.append('category_id', document.getElementById('category_id').value);
+            formData.append('active', document.getElementById('active').value);
+            formData.append('image', document.getElementById('image').files[0]);
+
+            try {
+                const response = await fetch('http://192.168.0.113:7777/meal', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: formData
+                });
+
+                const res = await response.json();
+
+                if (!response.ok) {
+                    alert('Failed to create meal: ' + (res.message || 'Unknown error'));
+                } else {
+                    socket.emit('update-menu')
+                    alert('Meal created successfully!');
+                    window.location.href = '../'
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

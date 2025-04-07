@@ -1,0 +1,55 @@
+html,
+body {
+    background-color: #9095a0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    width: 35vw;
+    height: 100vh;
+    background-color: white;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.meal-create-form {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+form {
+    border: 1px solid black;
+}
+
+input,
+label,
+button {
+    display: block;
+    margin: 5px;
+}
+
+button {
+    font-size: x-large;
+}
+
+@media screen and (max-width: 1000px) {
+    .main-container {
+        width: 50vw;
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .main-container {
+        width: 100vw;
+        height: 100vh;
+    }
+}
