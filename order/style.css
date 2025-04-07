@@ -1,0 +1,47 @@
+html,
+body {
+    background-color: #9095a0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+div {
+    border: 1px solid black;
+}
+
+.main-container {
+    width: 35vw;
+    height: 100%;
+    background-color: white;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .main-container {
+        width: 50vw;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .main-container {
+        width: 100vw;
+        height: 100%;
+    }
+}
+
+.btn {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
