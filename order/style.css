@@ -6,8 +6,78 @@ body {
     justify-content: center;
 }
 
-div {
-    border: 1px solid black;
+.create-btn {
+    text-align: center;
+    border: 2px solid green;
+    border-radius: 15px;
+}
+
+.create-btn a {
+    text-decoration: none;
+    color: black;
+}
+
+.order {
+    display: flex;
+    width: 95%;
+    flex-wrap: wrap;
+    margin: 10px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.table {
+    font-size: large;
+    margin: 10px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.table div {
+    /* font-size: x-large; */
+    color: blue;
+    font-weight: bold;
+}
+
+.products {
+    display: flex;
+    width: 70%;
+}
+
+.product {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    padding: 4px 0 4px 0;
+    margin: 4px 0 4px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.product:hover {
+    background-color: #c0c2c6;
+}
+
+.product div {
+    align-content: center;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.product-prepared {
+    font: italic;
+    text-decoration: line-through;
+    color: gray;
 }
 
 .main-container {
