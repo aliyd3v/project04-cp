@@ -1,0 +1,104 @@
+html,
+body {
+    background-color: #9095a0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    width: 35vw;
+    background-color: white;
+    margin: 0;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: blue;
+}
+
+h2 {
+    text-align: center;
+}
+
+.btn {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+}
+
+.tables-container {
+    background-color: white;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: hidden;
+}
+
+.table {
+    display: flex;
+    height: 10vh;
+    background-color: gray;
+    color: white;
+    border-radius: 2vh;
+    font-size: 10vh;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 88%;
+    margin: 1vh;
+}
+
+.verify-table {
+    width: 35vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(173, 167, 167);
+    position: fixed;
+    top: 0;
+    left: 32.5vw;
+}
+
+.verify-table button {
+    font-size: x-large;
+}
+
+@media screen and (max-width: 1000px) {
+    .main-container {
+        width: 50vw;
+        height: 100vh;
+    }
+
+    .verify-table {
+        width: 50vw;
+        height: 100vh;
+        left: 25vw;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .main-container {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .verify-table {
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+    }
+}
+
+.hidden {
+    display: none;
+}
