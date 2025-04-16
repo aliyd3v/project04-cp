@@ -1,0 +1,151 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.loader-box {
+  position: relative;
+
+  &:before {
+      content: '';
+      background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.33333 5.33333C7 5.33333 8 4.10636 8 2.66667C8 1.22697 6.81242 0 5.33333 0C4 0 2.66626 1.18328 2.66626 2.66667C2.66626 2.85628 2.68384 3.04177 2.71745 3.22162C2.73234 3.30137 2.73234 3.3014 2.38932 3.62835C2.04606 3.95557 1.35921 4.61024 0 6L0 8H2.33333L2.33325 7.33333H2.99992V6.66667H3.66659V6H4.33333C4.33309 5.5956 4.33276 5.52321 4.3326 5.47625C4.33252 5.44579 4.33244 5.42603 4.33244 5.33333H5.33333ZM5.33333 3.33333C5.7015 3.33333 6 3.03486 6 2.66667C6 2.29848 5.7015 2 5.33333 2C4.96517 2 4.66667 2.29848 4.66667 2.66667C4.66667 3.03486 4.96517 3.33333 5.33333 3.33333Z' fill='%230D63B2'/%3E%3C/svg%3E%0A");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+}
+
+.loader {
+  --color: #0D63B2;
+  --fade-color: rgba(13, 99, 178, 0.1);
+  --x-speed: 1;
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: rotateZ(0);
+  animation: ps-spin calc(15s / var(--x-speed)) linear infinite
+}
+
+@keyframes ps-spin {
+  from {
+      transform: rotateZ(0);
+  }
+  to {
+      transform: rotateZ(360deg);
+  }
+}
+
+.loader__span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  &::before,
+  &::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      animation: ps-spinner-scale calc(1.2s / var(--x-speed)) linear infinite
+  }
+
+  &::before {
+      left: 0;
+  }
+
+  &::after {
+      right: 0;
+  }
+
+  &:nth-child(1) {
+      transform: rotate(90deg);
+
+      &:before {
+          background: #0D63B2;
+      }
+
+      &:after {
+          background: rgba(13, 99, 178, 0.4);
+      }
+  }
+
+  &:nth-child(2) {
+      transform: rotate(120deg);
+
+      &:before {
+          background: rgba(13, 99, 178, 0.9);
+      }
+
+      &:after {
+          background: rgba(13, 99, 178, 0.3);
+      }
+  }
+
+  &:nth-child(3) {
+      transform: rotate(150deg);
+
+      &:before {
+          background: rgba(13, 99, 178, 0.8);
+      }
+
+      &:after {
+          background: rgba(13, 99, 178, 0.2);
+      }
+  }
+
+  &:nth-child(4) {
+      transform: rotate(180deg);
+
+      &:before {
+          background: rgba(13, 99, 178, 0.7);
+      }
+
+      &:after {
+          background: rgba(13, 99, 178, 0.1);
+      }
+  }
+
+  &:nth-child(5) {
+      transform: rotate(210deg);
+
+      &:before {
+          background: rgba(13, 99, 178, 0.6);
+      }
+
+      &:after {
+          background: rgba(13, 99, 178, 0.05);
+      }
+  }
+
+  &:nth-child(6) {
+      transform: rotate(240deg);
+
+      &:before {
+          background: rgba(13, 99, 178, 0.5);
+      }
+
+      &:after {
+          background: rgba(13, 99, 178, 0.02);
+      }
+  }
+}

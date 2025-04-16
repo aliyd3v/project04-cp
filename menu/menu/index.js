@@ -1,14 +1,17 @@
-const socket = io("https://api.aif.uz");
+const socket = io("http://192.168.0.113:7777");
 
 
 /*
     ELEMENTS
 */
 
+const token = localStorage.getItem('token')
 let cart = JSON.parse(localStorage.getItem('cart')) || [] // Cart item in localStorage
 let Categories   // Categories from real-time api
 let items = []
 let table = localStorage.getItem('table')   // Table for ordering (if exist)
+let orderBtn = document.querySelector('.order-btn')
+let cartBtn = document.getElementById('cart-btn')
 
 const menuDiv = document.getElementById('menu')
 const cartDiv = document.getElementById('cartItems')
@@ -77,6 +80,13 @@ function renderMenu(Categories) {
 
     if (!cart.length) {
         document.querySelector('.clear-btn').classList.add('hidden')
+        if (table) {
+            orderBtn.classList.add('hidden')
+        }
+        cartBtn.innerHTML = `🛒`
+    } else {
+        cartBtn.innerHTML = `
+        <i id="cart-item-amount" class="badge" value=${cart.length}></i>🛒`
     }
 
     renderCart()
@@ -161,19 +171,32 @@ function renderCart() {
 
 // Open cart popup
 function openCart() {
-    if (table) {
-        document.querySelector('.order-btn').classList.remove('hidden')
+    if (table && cart.length) {
+        orderBtn.classList.remove('hidden')
     }
     document.getElementById("cartOverlay").style.display = "block";
     document.getElementById("cartPopup").style.display = "block";
-    document.querySelector('.clear-btn').addEventListener('click', event => {
+    document.querySelector('.clear-btn').addEventListener('click', e => {
+        e.preventDefault();
+
         cart = []
         localStorage.removeItem('cart')
         cartDiv.innerHTML = ''
         document.querySelector('.clear-btn').classList.add('hidden')
         renderMenu(Categories)
     })
-    renderMenu(Categories)
+    orderBtn.addEventListener('click', e => {
+        e.preventDefault();
+
+        if (table && token && cart.length) {
+
+            socket.emit('create-order', { token, table, cart })
+            cart = []
+            localStorage.setItem('cart', JSON.stringify(cart))
+            window.location.href = '../success.html'
+
+        }
+    })
 }
 
 // Close cart popup

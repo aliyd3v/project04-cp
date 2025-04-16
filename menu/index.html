@@ -1,64 +1,27 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/images/cp.png">
+    <link rel="icon" href="/images/menu.png">
 </head>
 
 <body>
-    <div class="header">
-        <h2>🍽 Menu</h2>
-        <button onclick="openCart()">🛒</button>
-    </div>
-    <div class="menu-container" id="menu"></div>
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-    <div class="cart-popup" id="cartPopup">
-        <h2>🛒 Savatcha</h2>
-        <div id="cartItems"></div>
-        <div class="cart-footer">
-            <button class="btn" onclick="closeCart()">Close</button>
-            <button class="btn clear-btn">Clear</button>
-            <button class="btn order-btn hidden">Order</button>
-        </div>
+    <div class="container">
+        <button class="menu-button">MENU</button>
     </div>
 
+    <script>
 
+        document.querySelector('.menu-button').addEventListener('click', e => {
+            e.preventDefault();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="./index.js"></script>
+            window.location.href = '/menu/index.html'
+        })
+    </script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-const socket = io('https://api.aif.uz')
+const socket = io('http://192.168.0.113:7777')
 const token = localStorage.getItem('token')
 const categoriesContainer = document.getElementById('categories-container')
 const categoryDelBtn = document.getElementById('category-del-btn')
@@ -106,7 +106,7 @@ categoryDelBtn.addEventListener('click', async event => {
     const id = delPopup.dataset.id
     try {
         const response = await fetch(
-            `https://api.aif.uz/category/${id}`,
+            `http://192.168.0.113:7777/category/${id}`,
             {
                 method: 'DELETE',
                 headers: {
@@ -138,7 +138,7 @@ updateForm.addEventListener('submit', async event => {
     }
     try {
         const response = await fetch(
-            `https://api.aif.uz/category/${id}`,
+            `http://192.168.0.113:7777/category/${id}`,
             {
                 method: 'PUT',
                 headers: {
@@ -167,7 +167,7 @@ updateForm.addEventListener('submit', async event => {
 const changeStatus = async el => {
     try {
         const response = await fetch(
-            `https://api.aif.uz/category/${el.id}/change-status`,
+            `http://192.168.0.113:7777/category/${el.id}/change-status`,
             {
                 method: 'PUT',
                 headers: {

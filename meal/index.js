@@ -1,4 +1,4 @@
-const socket = io('https://api.aif.uz')
+const socket = io('http://192.168.0.113:7777')
 const token = localStorage.getItem('token')
 const mealsContainer = document.getElementById('meals-container')
 const updateFormContainer = document.getElementById('update-form-container')
@@ -38,6 +38,9 @@ socket.on('meals', ({ meals, error }) => {
         let pCategory = document.createElement('p')
         pCategory.textContent = `Category: ${el.category_name}`
 
+        let pIsReadyProduct = document.createElement('p')
+        pIsReadyProduct.textContent = `Is ready product: ${el.is_ready_product ? 'Yes' : 'No'}`
+
         let status = document.createElement('p')
         status.textContent = 'Status: '
         let statusValue = document.createElement('b')
@@ -71,6 +74,7 @@ socket.on('meals', ({ meals, error }) => {
             document.getElementById('price').value = el.price
             document.getElementById('category_id').value = el.category_id
             document.getElementById('active').value = el.active ? 1 : 0
+            document.getElementById('is_ready_product').value = el.is_ready_product ? 1 : 0
             document.getElementById('image').value = ''
 
             updateFormContainer.classList.remove('hidden')
@@ -89,6 +93,7 @@ socket.on('meals', ({ meals, error }) => {
         div.appendChild(img)
         div.appendChild(p)
         div.appendChild(pCategory)
+        div.appendChild(pIsReadyProduct)
         div.appendChild(status)
         div.append(activateBtn)
         div.append(unactivateBtn)
@@ -114,11 +119,12 @@ updateForm.addEventListener('submit', async event => {
     formData.append('price', document.getElementById('price').value);
     formData.append('category_id', document.getElementById('category_id').value);
     formData.append('active', document.getElementById('active').value);
+    formData.append('is_ready_product', document.getElementById('is_ready_product').value);
     document.getElementById('image').value ? formData.append('image', document.getElementById('image').files[0]) : false
 
     try {
         const response = await fetch(
-            `https://api.aif.uz/meal/${id}`,
+            `http://192.168.0.113:7777/meal/${id}`,
             {
                 method: 'PUT',
                 headers: {
@@ -127,13 +133,13 @@ updateForm.addEventListener('submit', async event => {
                 body: formData
             }
         );
-
         const res = await response.json();
-
         if (!response.ok) {
             alert('Failed to update meal: ' + (res.message || 'Unknown error'));
         }
-        socket.emit('update-menu')
+        if (document.getElementById('active').value == 1) {
+            socket.emit('update-menu')
+        }
     } catch (error) {
         alert('Error: ' + error.message);
     }
@@ -156,7 +162,7 @@ deleteMealBtn.addEventListener('click', async (event) => {
     const id = document.querySelector('.del-popup').dataset.id
 
     try {
-        const response = await fetch(`https://api.aif.uz/meal/${id}`, {
+        const response = await fetch(`http://192.168.0.113:7777/meal/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -166,7 +172,6 @@ deleteMealBtn.addEventListener('click', async (event) => {
         const res = await response.json()
 
         if (!response.ok) {
-            console.log(res)
             alert('Failed to update meal: ' + (res.message || 'Unknown error'));
         }
         socket.emit('update-menu')
@@ -183,7 +188,7 @@ deleteMealBtn.addEventListener('click', async (event) => {
 const changeStatus = async el => {
     try {
         const response = await fetch(
-            `https://api.aif.uz/meal/${el.id}/change-status`,
+            `http://192.168.0.113:7777/meal/${el.id}/change-status`,
             {
                 method: 'PUT',
                 headers: {

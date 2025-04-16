@@ -1,0 +1,192 @@
+html,
+body {
+    background-color: #9095a0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-family: sans-serif;
+}
+
+.create-btn {
+    text-align: center;
+    border: 2px solid green;
+    border-radius: 15px;
+}
+
+.create-btn a {
+    text-decoration: none;
+    color: black;
+}
+
+#orders-container {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.order {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 10px 0 10px 0;
+    border: 10px solid rgb(174, 174, 230);
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.table {
+    font-size: large;
+    padding: 10px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid black;
+}
+
+.table div {
+    font-size: x-large;
+    color: blue;
+    font-weight: bold;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
+
+.product {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    padding: 4px 0 4px 0;
+    margin: 4px 0 4px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.product:hover {
+    background-color: #c0c2c6;
+}
+
+.product div {
+    align-content: center;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.product-prepared {
+    font: italic;
+    text-decoration: line-through;
+    color: gray;
+    cursor: default;
+}
+
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    margin: 0;
+}
+
+.verify-prepared {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(224, 216, 216);
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.meal-info {
+    width: 80%;
+    height: 50vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+    color: black;
+    align-content: flex-end;
+}
+
+.meal-info div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.meal-info p {
+    background-color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.meal-info img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.verify-popup-btns {
+    width: 80%;
+    height: 50vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.verify-question {
+    width: 100%;
+}
+
+.verify-popup-btns button {
+    font-size: x-large;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+.btn {
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}

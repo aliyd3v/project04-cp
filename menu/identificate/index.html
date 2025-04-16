@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <link rel="icon" href="../images/menu.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="loader-box">
+    <span class="loader">
+      <span class="loader__span"></span>
+      <span class="loader__span"></span>
+      <span class="loader__span"></span>
+      <span class="loader__span"></span>
+      <span class="loader__span"></span>
+      <span class="loader__span"></span>
+    </span>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search)
+    const token = urlParams.get('datatoken')
+    const table = urlParams.get('datatable')
+    if (token && table) {
+      localStorage.setItem('token', token)
+      localStorage.setItem('table', table)
+      window.location.href = `../menu/index.html`
+    } else {
+      window.location.href = '../403.html'
+    }
+  </script>
+</body>
+
+</html>

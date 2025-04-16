@@ -17,6 +17,16 @@ body {
     color: black;
 }
 
+#orders-container {
+    background-color: white;
+}
+
+.footer-div {
+    width: 100%;
+    background-color: white;
+    height: 10px;
+}
+
 .order {
     display: flex;
     width: 95%;
@@ -29,10 +39,12 @@ body {
 
 .table {
     font-size: large;
-    margin: 10px;
+    padding: 10px;
     width: 80%;
     display: flex;
     justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid black;
 }
 
 .table div {
@@ -43,17 +55,29 @@ body {
 
 .products {
     display: flex;
-    width: 70%;
+    flex-wrap: wrap;
+    width: 80%;
 }
 
 .product {
-    width: 100%;
+    width: 80%;
     display: flex;
     align-content: center;
     padding: 4px 0 4px 0;
     margin: 4px 0 4px 0;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.product-status {
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: blue;
 }
 
 .product img {
@@ -74,6 +98,16 @@ body {
     padding-right: 20px;
 }
 
+.total-price-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 0;
+    border-top: 1px solid black;
+}
+
 .product-prepared {
     font: italic;
     text-decoration: line-through;
@@ -82,7 +116,7 @@ body {
 
 .main-container {
     width: 35vw;
-    height: 100%;
+    height: 100vh;
     background-color: white;
     margin: 0;
 }
@@ -91,17 +125,37 @@ h1 {
     text-align: center;
 }
 
+.del-popup {
+    width: 35vw;
+    height: 200px;
+    background-color: white;
+    position: fixed;
+    top: 35%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(173, 167, 167);
+}
+
 @media screen and (max-width: 1000px) {
     .main-container {
         width: 50vw;
-        height: 100%;
+        height: 100vh;
+    }
+
+    .del-popup {
+        width: 50vw;
     }
 }
 
 @media screen and (max-width: 680px) {
     .main-container {
         width: 100vw;
-        height: 100%;
+        height: 100vh;
+    }
+
+    .del-popup {
+        width: 100%;
     }
 }
 
@@ -112,6 +166,27 @@ h1 {
     font-weight: bold;
 }
 
+.del-btn {
+    font-size: large;
+    color: white;
+    background-color: red;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .hidden {
     display: none;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.green {
+    color: limegreen;
+}
+
+.blue {
+    color: blue;
 }

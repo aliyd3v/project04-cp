@@ -1,4 +1,4 @@
-const socket = io('https://api.aif.uz')
+const socket = io('http://192.168.0.113:7777')
 const token = localStorage.getItem('token');
 if (!token) window.location.href = '../../index.html';
 
@@ -29,7 +29,8 @@ nextBtn.addEventListener('click', e => {
 
     const tableNumber = verifyTable.dataset.table
     if (tableNumber) {
-        window.location.href = `https://menu.aif.uz/identificate/index.html?datatable=${tableNumber}&datatoken=${token}`
+        // window.location.href = `https://menu.aif.uz/identificate/index.html?datatable=${tableNumber}&datatoken=${token}`
+        window.location.href = `../../menu/identificate/index.html?datatable=${tableNumber}&datatoken=${token}`
     } else {
         alert('Fatal error at get table number!')
     }
