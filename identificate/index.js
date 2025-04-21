@@ -16,6 +16,7 @@ async function checkToken() {
             }
         })
         const res = await response.json()
+        console.log(res)
         if (response.ok) {
             if (res.status == 'success') {
                 localStorage.setItem('token', token)
