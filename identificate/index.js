@@ -2,7 +2,7 @@ const urlParams = new URLSearchParams(window.location.search)
 const token = urlParams.get('token')
 
 if (!token) {
-    return window.location.href = 'https://aif.uz'
+    window.location.href = 'https://aif.uz'
 } else {
     fetch('https://api.aif.uz/check-token', {
         method: 'get',
@@ -14,7 +14,7 @@ if (!token) {
         .then(res => {
             if (res.status == 'success') {
                 localStorage.setItem('token', token)
-                return window.location.href = 'https://cp.aif.uz/index.html'
+                window.location.href = 'https://cp.aif.uz/index.html'
             } else {
                 alert(res.message)
             }
