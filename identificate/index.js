@@ -16,15 +16,15 @@ async function checkToken() {
             }
         })
         const res = await response.json()
-        if (!response.ok) {
-            console.error('Internal server error!')
-        } else {
+        if (response.ok) {
             if (res.status == 'success') {
                 localStorage.setItem('token', token)
-                return window.location.href = '../index.html'
+                return window.location.href = 'https://cp.aif.uz/index.html'
             } else {
                 alert(res.message)
             }
+        } else {
+            console.error('Internal server error!')
         }
     } catch (error) {
         console.error('Internal server error!')
