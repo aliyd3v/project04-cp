@@ -21,7 +21,7 @@ async function checkToken() {
         } else {
             if (res.status == 'success') {
                 localStorage.setItem('token', token)
-                window.location.href = '../index.html'
+                return window.location.href = '../index.html'
             } else {
                 alert(res.message)
             }
