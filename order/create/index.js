@@ -1,4 +1,4 @@
-const socket = io('http://192.168.0.113:7777')
+const socket = io('https://api.aif.uz')
 const token = localStorage.getItem('token');
 if (!token) window.location.href = '../../index.html';
 

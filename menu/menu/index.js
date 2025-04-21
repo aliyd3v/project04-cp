@@ -1,8 +1,8 @@
-const socket = io("http://192.168.0.113:7777");
+const socket = io("https://api.aif.uz");
 
 
 /*
-    ELEMENTS
+ELEMENTS
 */
 
 const token = localStorage.getItem('token')
@@ -12,10 +12,19 @@ let items = []
 let table = localStorage.getItem('table')   // Table for ordering (if exist)
 let orderBtn = document.querySelector('.order-btn')
 let cartBtn = document.getElementById('cart-btn')
+let tableNumber = document.querySelector('.table-number')
 
 const menuDiv = document.getElementById('menu')
 const cartDiv = document.getElementById('cartItems')
 
+if (table) {
+    if (Number(table) != NaN) {
+        if (Number(table) > 0) {
+            tableNumber.innerHTML = `<div>Table ${table}</div>`
+            tableNumber.classList.remove('hidden')
+        }
+    }
+}
 
 
 /*

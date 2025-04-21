@@ -146,6 +146,20 @@ body {
     margin-bottom: 10px;
 }
 
+.table-number {
+    display: flex;
+    justify-items: left;
+    margin-bottom: 10px;
+}
+
+.table-number div {
+    padding: 10px 20px;
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
 .cart-item {
     display: flex;
     justify-content: space-between;
