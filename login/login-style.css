@@ -274,6 +274,18 @@
   [type="password"] + label + small + svg {
     left: 10.75rem;
   }
+
+  .login-container {
+    height: 100%;
+  }
+
+  .login-cont {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
   
   /*
   Portrait mode for phones and sidebars 
