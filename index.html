@@ -46,7 +46,30 @@
         </div>
     </div>
 
-    <script src="/index.js"></script>
+    <script>
+        const token = localStorage.getItem('token');
+        (async () => {
+            if (!token) {
+                window.location.href = 'https://aif.uz'
+            } else {
+                const response = await fetch(`${domain}/check-token`, {
+                    method: 'get',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                const res = await response.json()
+                if (!response.ok) {
+                    alert('fatal error')
+                } else {
+                    if (res.status != 'success') {
+                        localStorage.removeItem('token')
+                        window.location.href = 'https://aif.uz'
+                    }
+                }
+            }
+        })()
+    </script>
 </body>
 
 </html>
