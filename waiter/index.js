@@ -144,13 +144,13 @@ function newOrderAudioPlay(number) {
     new Audio('../audio/notification.mp3').play()
     setTimeout(() => {
         new Audio('../audio/заказ_готова.mp3').play()
-    }, 1000)
+    }, 1500)
     setTimeout(() => {
         new Audio('../audio/stol.mp3').play()
-    }, 2200)
+    }, 2700)
     setTimeout(() => {
         new Audio(`../audio/number/${number}.mp3`).play()
-    }, 2700)
+    }, 3200)
 }
 
 
