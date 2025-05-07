@@ -15,21 +15,31 @@ socket.on('meals', ({ meals, error }) => {
     }
     productsBox.innerHTML = '';
     meals.forEach(el => {
-        const product = document.createElement("div");
+        const product = document.createElement("tr");
         product.className = "product";
         product.innerHTML = `
-            <div class="product-image">
+            <td class="product-image">
                 <img src="${el.image_url}" alt="${el.name}">
-            </div>
-            <div class="product-info">
-                <div>
-                    <h2 class="product-name">${el.name}</h2>
-                    <p class="product-desc">${''}</p>
-                </div>
+            </td>
+            <td class="product-name">
+                <h2 class="product-name">${el.name}</h2>
+            </td>
+            <td class="product-price">
                 <p class="product-price">${el.price} so'm</p>
-                <button onclick="openUpdateModal('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">Update</button>
-                <button onclick="openDeletePopup('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">Delete</button>
-            </div>`;
+            </td>
+            <td class="update-btn">
+                <button onclick="openUpdateModal('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">
+                    <i class="fa-regular fa-pen"></i>
+                    Update
+                </button>
+            </td>
+            <td class="delete-btn">
+                <button onclick="openDeletePopup('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">
+                    <i class="fa-regular fa-trash"></i>
+                    Delete
+                </button>
+            </td>
+        `;
         productsBox.appendChild(product)
     })
 });
