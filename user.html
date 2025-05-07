@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script> -->
+    <link rel="stylesheet" href="assets/css/index.css">
+    <title>MyCafe Dashboard</title>
+</head>
+
+<body>
+    <div class="viewport">
+        <div class="side-bar">
+            <div class="logo">
+                <img src="assets/icons/myCafe-light.png" alt="">
+            </div>
+            <nav>
+                <ul class="side-bar-nav-list">
+                    <li>
+                        <a class="food-sect-links" onclick="director('index')">
+                            <i class="fa-solid fa-display"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="food-sect-links" onclick="director('product')">
+                            <i class="fa-solid fa-utensils"></i>
+                            <span>Taomlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="food-sect-links" onclick="director('category')">
+                            <i class="fa-solid fa-table-list"></i>
+                            <span>Kategoriyalar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="food-sect-links" onclick="director('order')">
+                            <i class="fa-solid fa-receipt"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="food-sect-links" onclick="director('table')">
+                            <i class="fa-solid fa-chair"></i>
+                            <span>Tables</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="food-sect-links" onclick="director('user')">
+                            <i class="fa-solid fa-users"></i>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="food-sect-links" onclick="director('history')">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="dashboard-cont">
+            <header class="header">
+                <div class="container">
+                    <div class="header-cont">
+                        <h1>MY CAFE</h1>
+                        <div>
+                            <button class="profile-btn">
+                                <i class="fa-light fa-user"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="food-cont">
+                <div class="container">
+                    <div id="create" style="display: none;">
+                        <div class="section-header">
+                            <h2 class="section-title">Create user</h2>
+                        </div>
+                        <div class="form-box">
+                            <form id="create-form">
+
+                                <label for="name">Input name</label>
+                                <input type="text" name="name" id="name-in-create" required> <br>
+
+                                <label for="username">Input username</label>
+                                <input type="text" name="username" id="username-in-create" required> <br>
+
+                                <label for="password">Input password</label>
+                                <input type="password" name="password" id="password-in-create" required> <br>
+
+                                <label for="role">Select role</label>
+                                <select name="role" id="role-in-create" required>
+                                    <option value="">Select role</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Chef">Chef</option>
+                                    <option value="Cook">Cook</option>
+                                    <option value="Waiter">Waiter</option>
+                                    <option value="Waitress">Waitress</option>
+                                </select><br>
+
+                                <label for="gender">Select gender</label>
+                                <select name="gender" id="gender-in-create" required>
+                                    <option value="">Select gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select><br>
+
+                                <button type="button" onclick="closeCreateModal()">Cancel</button>
+                                <button type="submit">Create</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="update" style="display: none;">
+                        <div class="section-header">
+                            <h2 class="section-title">Update user</h2>
+                        </div>
+                        <div class="form-box">
+                            <div style="display: none;" id="updating-user-data-id"></div>
+                            <form id="update-form">
+
+                                <label for="name">Input name</label>
+                                <input type="text" name="name" id="name-in-update" required> <br>
+
+                                <label for="username">Input username</label>
+                                <input type="text" name="username" id="username-in-update" required> <br>
+
+                                <label for="role">Select role</label>
+                                <select name="role" id="role-in-update" required></select><br>
+
+                                <label for="gender">Select gender</label>
+                                <select name="gender" id="gender-in-update" required></select><br>
+
+                                <button type="button" onclick="closeUpdateModal()">Cancel</button>
+                                <button type="submit">Update</button>
+                            </form>
+                            <button onclick="openUpdatePassPopup()">Change password</button>
+                            <div class="update-pass-popup"
+                                style="position: fixed; top: 35%; left: 40%; background-color: green;height: 200px; width: 400px; display: none; justify-content: center; align-items: center; flex-wrap: wrap;">
+                                <form id="update-pass-form">
+                                    <label for="password">Input new password</label>
+                                    <input type="password" name="password" id="password-in-update" required><br>
+
+                                    <button type="button" onclick="closeUpdatePassPopup()">Cancel</button>
+                                    <button type="submit">Change password</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="users" class="food-sects">
+                        <div class="section-header">
+                            <h2 class="section-title">Users</h2>
+                            <button onclick="openCreateModal()" class="create-btn" id="userCreateButton">
+                                <i class="fa-regular fa-plus"></i>
+                                User qo'shish
+                            </button>
+                        </div>
+                        <div class="user-box">
+                            <!-- bu yerda JS yordamida Userlar yig'iladi -->
+                        </div>
+                    </div>
+                    <div class="del-popup"
+                        style="position: fixed; top: 35%; left: 40%; background-color: green;height: 200px; width: 400px; display: none; justify-content: center; align-items: center; flex-wrap: wrap;">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/user.js"></script>
+</body>
+
+</html>

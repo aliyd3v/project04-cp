@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CP</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/cp.png">
+</head>
+
+<body>
+    <div class="main-container">
+
+        <div style="text-align: center;">
+            <div>
+                <a href="./waiter/index.html" style="text-decoration: none; color: black;">
+                    <h1>WAITER</h1>
+                </a>
+            </div>
+            <div>
+                <a href="./cook/index.html" style="text-decoration: none; color: black;">
+                    <h1>COOK</h1>
+                </a>
+            </div>
+            <div>
+                <a href="./order/index.html" style="text-decoration: none; color: black;">
+                    <h1>ORDER</h1>
+                </a>
+            </div>
+            <div>
+                <a href="./meal/index.html" style="text-decoration: none; color: black;">
+                    <h1>MEAL</h1>
+                </a>
+            </div>
+            <div>
+                <a href="./category/index.html" style="text-decoration: none; color: black;">
+                    <h1>CATEGORY</h1>
+                </a>
+            </div>
+            <div style="background-color: red;">
+                <a href="/logout/index.html" style="text-decoration: none; color: white;">
+                    <h1>LOGOUT</h1>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const token = localStorage.getItem('token');
+        (async () => {
+            if (!token) {
+                window.location.href = 'https://aif.uz'
+            } else {
+                const response = await fetch(`${domain}/check-token`, {
+                    method: 'get',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                const res = await response.json()
+                if (!response.ok) {
+                    alert('fatal error')
+                } else {
+                    if (res.status != 'success') {
+                        localStorage.removeItem('token')
+                        window.location.href = 'https://aif.uz'
+                    }
+                }
+            }
+        })()
+    </script>
+</body>
+
+</html>
