@@ -2,7 +2,7 @@
 
 :root {
     --primary: #74512D;
-    --secondary: #e6ecff;
+    --secondary: #FFFDF6;
     --title-color: #2b2b2b;
     --font: "Sansation";
 }
@@ -23,6 +23,7 @@ body {
 
 a,
 button {
+    font-family: var(--font);
     cursor: pointer;
 }
 
@@ -155,72 +156,139 @@ button {
         border: none;
         border-radius: 16px;
         background-color: var(--primary);
-        color: var(--secondary);
+        color: white;
         padding: 10px 24px;
         font-size: 16px;
         font-family: var(--font);
     }
 }
 
-.products-box {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
 .product {
     padding: 15px;
-    border-radius: 30px;
-    background-color: var(--secondary);
-    box-shadow: -12px 12px 10px 0 rgba(0, 0, 0, 0.5), 15px -15px 10px 0 rgba(255, 255, 255);
-    
-    & .product-image {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    & .product-image img {
-        aspect-ratio: 3 / 2;
-        object-fit: cover;
-        width: 100%;
-        border-radius: 15px 15px 0 0;
-    }
-    
-    & .product-info {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    border-bottom: 1px solid #d3d1cb;
+
+    & td {
+        width: 20%;
+        height: inherit;
+        padding-inline: 15px;
         display: flex;
-        align-items: start;
-        gap: 10px;
+        align-items: center;
     }
-    
-    & .product-info div {
-        width: 60%;
+
+    & .product-image {
+        display: block;
+        margin: 0 auto;
+        border: none;
+        
+        & img {
+            width: 60%;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+        }
     }
-    
-    & .product-info div .product-name {
-        font-size: 20px;
-        font-weight: 600;
-        color: var(--title-color);
-        margin-bottom: 6px;
+
+    & .product-name {
+        font-weight: 500;
+        font-size: 18px
     }
-    
-    & .product-info div .product-desc {
-        font-family: 18px;
-        font-weight: 400;
-        color: var(--title-color);
-        margin-bottom: 6px;
+
+    & .update-btn,
+    & .delete-btn {
+       justify-content: center;
     }
-    
-    & .product-info .product-price {
-        text-align: center;
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--title-color);
-        margin-block: 4px 8px;
-        padding: 8px 12px;
-        background-color: var(--secondary);
-        box-shadow: -6px 6px 10px 0 rgba(0, 0, 0, 0.5), 8px -8px 10px 0 rgba(255, 255, 255);
+
+    & .update-btn button {
+        border: none;
+        background-color: forestgreen;
+        padding: 12px 32px;
         border-radius: 16px;
-        flex: 1;
+        color: white;
+        font-family: var(--font);
+        font-size: 16px;
+    }
+
+    & .delete-btn button {
+        border: none;
+        background-color: red;
+        padding: 12px 32px;
+        border-radius: 16px;
+        color: white;
+        font-family: var(--font);
+        font-size: 16px;
+    }
+}
+
+.product:hover {
+    background-color: #eceae4;
+}
+
+#create-form {
+    width: 60%;
+
+    & div {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 32px;
+
+        & label {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        & input {
+            flex: 1;
+            height: 100%;
+            padding: 8px 4px;
+            border: 1px solid var(--primary);
+            font-family: var(--font);
+            font-size: 18px;
+        }
+
+        & input:focus,
+        & input:focus-visible,
+        & select:focus,
+        & select:focus-visible {
+            outline: none;
+        }
+
+        & select {
+            font-family: var(--font);
+            height: 100%;
+            flex: 1;
+        }
+
+        & input[type="number"],
+        & input[type="number"]::-webkit-inner-spin-button,
+        & input[type="number"]::-webkit-outer-spin-button {
+            appearance: none;
+        }
+
+        & input[type="file"] {
+            font-size: 16px;
+            padding: 4px;
+        }
+    }
+
+    & button {
+        padding: 12px 24px;
+        font-size: 18px;
+        border: none;
+        color: white;
+        border-radius: 12px;
+        margin-right: 20px;
+    }
+
+    & button[type="button"] {
+        background-color: red;
+    }
+
+    & button[type="submit"] {
+        background-color: forestgreen;
     }
 }
 
@@ -234,5 +302,11 @@ button {
         font-size: 24px;
         font-weight: 700;
         color: var(--title-color);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .product:hover {
+        background-color: var(--secondary);
     }
 }
