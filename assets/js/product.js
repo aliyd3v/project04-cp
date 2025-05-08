@@ -30,13 +30,13 @@ socket.on('meals', ({ meals, error }) => {
             <td class="update-btn">
                 <button onclick="openUpdateModal('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">
                     <i class="fa-regular fa-pen"></i>
-                    Update
+                    Yangilash
                 </button>
             </td>
             <td class="delete-btn">
                 <button onclick="openDeletePopup('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">
                     <i class="fa-regular fa-trash"></i>
-                    Delete
+                    O'chirish
                 </button>
             </td>
         `;
