@@ -22,22 +22,27 @@ socket.on('meals', ({ meals, error }) => {
                 <img src="${el.image_url}" alt="${el.name}">
             </td>
             <td class="product-name">
-                <h2 class="product-name">${el.name}</h2>
+                <h2>${el.name}</h2>
             </td>
             <td class="product-price">
-                <p class="product-price">${el.price} so'm</p>
+                <p>${el.price} so'm</p>
             </td>
-            <td class="update-btn">
-                <button onclick="openUpdateModal('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">
+            <td class="is-ready-meal">
+                <p>${el.is_ready_product ? "Ha" : "Yo'q"}</p>
+            </td>
+            <td class="is-active-meal">
+                <p>${el.active ? "Ha" : "Yo'q"}</p>
+            </td>
+            <td class="product-actions">
+                <button class="update-btn" onclick="openUpdateModal('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">
                     <i class="fa-regular fa-pen"></i>
-                    Yangilash
+                    Tahrirlash
                 </button>
-            </td>
-            <td class="delete-btn">
-                <button onclick="openDeletePopup('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">
+                <button class="delete-btn" onclick="openDeletePopup('${el.id}', '${el.name}', '${el.price}', '${el.image_url}', '${el.category_id}', '${el.category_name}', '${el.active}', '${el.is_ready_product}')">
                     <i class="fa-regular fa-trash"></i>
                     O'chirish
                 </button>
+                
             </td>
         `;
         productsBox.appendChild(product)
@@ -142,25 +147,30 @@ function closeUpdateModal() {
 
 // Open and close functions for delete popup.
 function openDeletePopup(id, name, price, image_url, category_id, category_name, active, is_ready_product) {
-    document.querySelector('.del-popup').style.display = 'flex'
-    document.querySelector('.del-popup').dataset.id = id
+    document.querySelector('.del-popup').style.display = 'flex';
+    document.querySelector('.del-popup-background').classList.add("active");
+    document.querySelector('.del-popup').classList.add("active");
+    document.querySelector('.del-popup').dataset.id = id;
     document.querySelector('.del-popup').innerHTML = `
-    <div style="width: 100%; display: flex; justify-content: center;">
+    <div class="del-title">
         <h3>Delete Product</h3>
     </div>
-    <div>
-        <img src="${image_url}" style="max-width: 100px; display: flex; justify-content: center;"" alt="${name}">
+    <div class="del-img">
+        <img src="${image_url}" alt="${name}">
     </div>
-    <div style="width: 100%; display: flex; justify-content: center;">
+    <div class="del-name">
         <p>${name}</p>
     </div>
-    <div style="width: 100%;  display: flex; justify-content: center;">
+    <div class="del-actions">
         <button onclick="closeDeletePopup()">Cancel</button>
         <button onclick="deleteProduct()">Delete</button>
     </div>`;
 }
+
 function closeDeletePopup() {
     document.querySelector('.del-popup').style.display = 'none'
+    document.querySelector('.del-popup').classList.remove("active");
+    document.querySelector('.del-popup-background').classList.remove("active");
     document.querySelector('.del-popup').removeAttribute('data-id')
     document.querySelector('.del-popup').innerHTML = '';
 }

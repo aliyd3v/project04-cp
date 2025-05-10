@@ -41,18 +41,6 @@ h1 {
     left: 36%;
 }
 
-.del-popup {
-    width: 400px;
-    height: 200px;
-    background-color: white;
-    position: fixed;
-    top: 35%;
-    left: 35%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
 .btn {
     width: 100px;
     height: 50px;

@@ -134,26 +134,38 @@
                             <div style="display: none;" id="updating-product-data-id"></div>
                             <form id="update-form" enctype="multipart/form-data">
 
-                                <label for="name">Taom nomi:</label>
-                                <input type="text" name="name" id="name-in-update" required> <br>
+                                <div>
+                                    <label for="name">Taom nomi:</label>
+                                    <input type="text" name="name" id="name-in-update" required> <br>
+                                </div>
 
-                                <label for="price">Taom narxi:</label>
-                                <input type="number" name="price" id="price-in-update" required><br>
+                                <div>
+                                    <label for="price">Taom narxi:</label>
+                                    <input type="number" name="price" id="price-in-update" required><br>
+                                </div>
 
-                                <label for="category_id">Kategoriyani tanlang</label>
-                                <select name="category_id" id="category_id-in-update" required></select><br>
+                                <div>
+                                    <label for="category_id">Kategoriyani tanlang</label>
+                                    <select name="category_id" id="category_id-in-update" required></select><br>
+                                </div>
 
-                                <label for="is_ready_product">Mahsulot tayyor holatda bo'ladimi?</label>
-                                <select name="is_ready_product" id="is_ready_product-in-update"></select><br>
+                                <div>
+                                    <label for="is_ready_product">Mahsulot tayyor holatda bo'ladimi?</label>
+                                    <select name="is_ready_product" id="is_ready_product-in-update"></select><br>
+                                </div>
 
-                                <label for="active">Sotuvga tayyormi?</label>
-                                <select name="active" id="active-in-update"></select><br>
+                                <div>
+                                    <label for="active">Sotuvga tayyormi?</label>
+                                    <select name="active" id="active-in-update"></select><br>
+                                </div>
 
-                                <label for="image">Mahsulot rasmini kiriting</label>
-                                <input type="file" id="image-in-update" name="image"><br>
+                                <div>
+                                    <label for="image">Mahsulot rasmini kiriting</label>
+                                    <input type="file" id="image-in-update" name="image"><br>
+                                </div>
 
                                 <button type="button" onclick="closeUpdateModal()">Bekor qilish</button>
-                                <button type="submit">Yangilash</button>
+                                <button type="submit">Tahrirlash</button>
                             </form>
                         </div>
                     </div>
@@ -166,12 +178,21 @@
                             </button>
                         </div>
                         <table>
+                            <thead class="products-table-header">
+                                <tr>
+                                    <th class="product-table-header-item">Rasm</th>   
+                                    <th class="product-table-header-item">Nomi</th>
+                                    <th class="product-table-header-item">Narxi</th>
+                                    <th class="product-table-header-item">Sotuvga tayyormi?</th>
+                                    <th class="product-table-header-item">Taom aktivmi?</th>
+                                    <th class="product-table-header-item">Amallar</th>
+                                </tr>
+                            </thead>
                             <tbody class="products-box"></tbody>
                         </table>
                     </div>
-                    <div class="del-popup"
-                        style="position: fixed; top: 35%; left: 40%; background-color: green;height: 200px; width: 400px; display: none; justify-content: center; align-items: center; flex-wrap: wrap;">
-                    </div>
+                    <div class="del-popup-background" onclick="closeDeletePopup()"></div>
+                    <div class="del-popup"></div>
                 </div>
             </section>
         </div>
